@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.rides.R
 import com.example.rides.data.Vehicle
 import com.example.rides.databinding.FragmentSearchBinding
 import com.example.rides.ui.search.adapter.VehicleAdapter
@@ -16,7 +19,7 @@ class VehicleSearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,18 +38,18 @@ class VehicleSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.vehicleInformation.observe(viewLifecycleOwner){ it ->
             if(it.isNotEmpty()){
-                val vehicleAdapter:VehicleAdapter = VehicleAdapter(it)
+                val vehicleAdapter = VehicleAdapter(it)
                 binding.vehicleRecyclerView.adapter = vehicleAdapter
 
                 vehicleAdapter.listener = { vehicle ->
-                    vehicle?.let { viewModel.updateSelectedVehicleItem(vehicle) }
+                    vehicle?.let {
+                        val navController = findNavController()
+
+                        navController.navigate(R.id.vehicleDetailsFragment)
+                        viewModel.updateSelectedVehicleItem(vehicle)
+                    }
                 }
             }
-        }
-
-        viewModel.selectedVehicle.observe(viewLifecycleOwner){
-            //TODO: use action to navigate to the vehicle details fragment
-            Log.d("PDEBUG", it.vin)
         }
 
         binding.submitButton.setOnClickListener {

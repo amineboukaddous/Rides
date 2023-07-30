@@ -3,11 +3,23 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph.xml"
-        app:startDestination="@id/searchFragment">
+        app:startDestination="@id/vehicleSearchFragment">
 
     <fragment
-            android:id="@+id/searchFragment"
+            android:id="@+id/vehicleSearchFragment"
             android:name="com.example.rides.ui.search.VehicleSearchFragment"
             android:label="Vehicle Search"
-            tools:layout="@layout/fragment_search" />
+            tools:layout="@layout/fragment_search" >
+        <action
+                android:id="@+id/action_vehicleSearchFragment_to_vehicleDetailsFragment"
+                app:destination="@id/vehicleDetailsFragment"
+                app:popUpTo="@id/vehicleSearchFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+            android:id="@+id/vehicleDetailsFragment"
+            android:name="com.example.rides.ui.details.VehicleDetailsFragment"
+            android:label="Vehicle Details"
+            tools:layout="@layout/fragment_vehicle_details"
+            />
 </navigation>

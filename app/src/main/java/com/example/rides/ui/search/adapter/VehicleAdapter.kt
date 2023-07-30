@@ -23,7 +23,6 @@ class VehicleAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_vehicles, parent, false)
-
         return VehicleViewHolder(adapterLayout)
     }
 
@@ -34,7 +33,6 @@ class VehicleAdapter(
 
         holder.vinText.text = currentVehicle.vin
         holder.makeModelText.text = currentVehicle.makeModel
-
         holder.itemView.setOnClickListener{
             listener.invoke(currentVehicle)
         }
