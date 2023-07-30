@@ -19,6 +19,8 @@
             android:layout_height="match_parent"
             tools:context=".ui.search.VehicleSearchFragment">
 
+
+
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputField"
                 android:layout_width="match_parent"
@@ -65,7 +67,19 @@
                     android:scrollbars="vertical"
                     app:layoutManager="LinearLayoutManager"
                     />
+
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vehicleSwipeRefresh"
+                android:visibility="gone"
+                android:indeterminate="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

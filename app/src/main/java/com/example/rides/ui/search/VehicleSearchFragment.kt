@@ -40,6 +40,7 @@ class VehicleSearchFragment : Fragment() {
             if(it.isNotEmpty()){
                 val vehicleAdapter = VehicleAdapter(it)
                 binding.vehicleSwipeRefresh.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
                 binding.vehicleRecyclerView.adapter = vehicleAdapter
                 binding.inputField.error = null
 
@@ -62,6 +63,7 @@ class VehicleSearchFragment : Fragment() {
                 val vehicleCount = Integer.parseInt(inputFieldValue)
 
                 if(viewModel.isSearchInputValid(vehicleCount)){
+                    binding.progressBar.visibility = View.VISIBLE
                     viewModel.loadVehicles(vehicleCount)
                 } else{
                     binding.inputField.error = getString(R.string.bad_input_field_search)
