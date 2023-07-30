@@ -1,11 +1,12 @@
 package com.example.rides.network
 
-import com.example.rides.data.VehicleModel
+import com.example.rides.data.Vehicle
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://random-data-api.com/api/vehicle/"
 
@@ -19,8 +20,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface VehicleApiService {
-    @GET("random_vehicle?size=1")
-    suspend fun getVehicles(): List<VehicleModel>
+    @GET("random_vehicle")
+    suspend fun getVehicles(@Query("size") size: Int): List<Vehicle>
 }
 
 object VehicleApi {

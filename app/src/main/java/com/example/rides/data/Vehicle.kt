@@ -2,11 +2,11 @@ package com.example.rides.data
 
 import com.squareup.moshi.Json
 
-data class VehicleModel(
+data class Vehicle(
     val id:Int,
     val uid: String,
     val vin: String,
-    @Json(name = "make_and_model") val makerModel: String,
+    @Json(name = "make_and_model") val makeModel: String,
     val color: String,
     val transmission: String,
     @Json(name = "drive_type") val driveType: String,
