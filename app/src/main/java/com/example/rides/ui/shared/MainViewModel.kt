@@ -32,4 +32,9 @@ class MainViewModel : ViewModel() {
     fun updateSelectedVehicleItem(vehicle: Vehicle){
         _selectedVehicle.value = vehicle
     }
+
+    fun isSearchInputValid(vehicleCount: Int) : Boolean{
+        if((vehicleCount >= 1) and (vehicleCount <= 100)) return true
+        return false
+    }
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -58,9 +59,21 @@ class VehicleSearchFragment : Fragment() {
 
             if(inputFieldValue.isNotEmpty()){
                 val vehicleCount = Integer.parseInt(inputFieldValue)
-                viewModel.loadVehicles(vehicleCount)
-            }else{
-                Log.d("View", "Bad input")
+
+                if(viewModel.isSearchInputValid(vehicleCount)){
+                    binding.inputField.error = null
+                    viewModel.loadVehicles(vehicleCount)
+                } else{
+                    binding.inputField.error = getString(R.string.bad_input_field_search)
+                }
+            } else{
+                binding.inputField.error = getString(R.string.empty_input_field)
+            }
+        }
+
+        binding.inputField.editText?.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.inputField.error = null
             }
         }
 
