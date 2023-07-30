@@ -9,7 +9,7 @@
             android:id="@+id/vehicleSearchFragment"
             android:name="com.example.rides.ui.search.VehicleSearchFragment"
             android:label="Vehicle Search"
-            tools:layout="@layout/fragment_search" >
+            tools:layout="@layout/fragment_vehicle_search" >
         <action
                 android:id="@+id/action_vehicleSearchFragment_to_vehicleDetailsFragment"
                 app:destination="@id/vehicleDetailsFragment"

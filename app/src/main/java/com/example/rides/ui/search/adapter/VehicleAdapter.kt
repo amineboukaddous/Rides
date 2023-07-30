@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rides.R
 import com.example.rides.data.Vehicle
+import com.google.android.material.card.MaterialCardView
 
 class VehicleAdapter(
         private val vehicleList: List<Vehicle>
@@ -29,12 +30,16 @@ class VehicleAdapter(
     override fun getItemCount(): Int = vehicleList.size
 
     override fun onBindViewHolder(holder: VehicleViewHolder, position: Int) {
+        val cardView = holder.itemView.findViewById<MaterialCardView>(R.id.cardView)
         val currentVehicle = vehicleList[position]
 
         holder.vinText.text = currentVehicle.vin
         holder.makeModelText.text = currentVehicle.makeModel
-        holder.itemView.setOnClickListener{
+        cardView.setOnClickListener{
             listener.invoke(currentVehicle)
         }
+        //holder.itemView.setOnClickListener{
+        //    listener.invoke(currentVehicle)
+        //}
     }
 }

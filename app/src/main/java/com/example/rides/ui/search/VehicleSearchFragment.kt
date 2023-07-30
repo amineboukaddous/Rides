@@ -11,12 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.rides.R
 import com.example.rides.data.Vehicle
-import com.example.rides.databinding.FragmentSearchBinding
+import com.example.rides.databinding.FragmentVehicleSearchBinding
 import com.example.rides.ui.search.adapter.VehicleAdapter
 import com.example.rides.ui.shared.MainViewModel
 
 class VehicleSearchFragment : Fragment() {
-    private var _binding: FragmentSearchBinding? = null
+    private var _binding: FragmentVehicleSearchBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel by activityViewModels<MainViewModel>()
@@ -26,7 +26,7 @@ class VehicleSearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentVehicleSearchBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vehicleRecyclerView.adapter = VehicleAdapter(listOf<Vehicle>())

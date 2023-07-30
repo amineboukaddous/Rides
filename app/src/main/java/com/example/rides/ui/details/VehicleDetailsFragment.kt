@@ -6,15 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.rides.R
-import com.example.rides.data.Vehicle
-import com.example.rides.databinding.FragmentSearchBinding
 import com.example.rides.databinding.FragmentVehicleDetailsBinding
-import com.example.rides.ui.search.adapter.VehicleAdapter
 import com.example.rides.ui.shared.MainViewModel
-import kotlinx.coroutines.launch
 
 class VehicleDetailsFragment : Fragment() {
     private var _binding: FragmentVehicleDetailsBinding? = null
@@ -40,7 +34,7 @@ class VehicleDetailsFragment : Fragment() {
             binding.vehicleMakeModel.text = it.makeModel
             binding.vehicleVin.text = getString(R.string.vin_vehicle_detail, it.vin)
             binding.vehicleColor.text = getString(R.string.color_vehicle_detail, it.color)
-            binding.vehicleType.text = getString(R.string.vin_vehicle_detail, it.carType)
+            binding.vehicleType.text = getString(R.string.type_vehicle_detail, it.carType)
         }
     }
 }
