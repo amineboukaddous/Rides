@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Rides</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="submit">Submit</string>
     <string name="vin_vehicle_detail">VIN: %1$s</string>
     <string name="color_vehicle_detail">COLOR: %1$s</string>
     <string name="type_vehicle_detail">TYPE: %1$s</string>
+    <string name="desired_number_of_vehicles">Desired number of vehicles</string>
 </resources>

@@ -53,7 +53,8 @@ class VehicleSearchFragment : Fragment() {
         }
 
         binding.submitButton.setOnClickListener {
-            val inputFieldValue:String = binding.inputField.text.toString()
+            val editText = binding.inputField.editText
+            val inputFieldValue:String = editText?.text.toString()
 
             if(inputFieldValue.isNotEmpty()){
                 val vehicleCount = Integer.parseInt(inputFieldValue)
