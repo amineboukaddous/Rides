@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.example.rides.ui.search.SearchViewModel" />
+                type="com.example.rides.ui.shared.MainViewModel" />
     </data>
 
 <androidx.core.widget.NestedScrollView
@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.search.SearchFragment">
+            tools:context=".ui.search.VehicleSearchFragment">
 
         <EditText
                 android:id="@+id/inputField"
@@ -44,12 +44,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
                 app:layout_constraintTop_toBottomOf="@+id/submitButton"
                 android:clickable="true"
                 android:focusable="true"
                 android:scrollbars="vertical"
+                app:layoutManager="LinearLayoutManager"
                 >
 
         </androidx.recyclerview.widget.RecyclerView>

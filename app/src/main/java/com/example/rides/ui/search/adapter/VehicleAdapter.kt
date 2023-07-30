@@ -1,5 +1,6 @@
 package com.example.rides.ui.search.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,9 @@ class VehicleAdapter(
         private val vehicleList: List<Vehicle>
     ) : RecyclerView.Adapter<VehicleAdapter.VehicleViewHolder>() {
 
-    class VehicleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    lateinit var listener: ((Vehicle?) -> Unit)
+
+    class VehicleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val vinText: TextView = view.findViewById(R.id.vinText)
         val makeModelText: TextView = view.findViewById(R.id.makeModelText)
     }
@@ -31,5 +34,9 @@ class VehicleAdapter(
 
         holder.vinText.text = currentVehicle.vin
         holder.makeModelText.text = currentVehicle.makeModel
+
+        holder.itemView.setOnClickListener{
+            listener.invoke(currentVehicle)
+        }
     }
 }

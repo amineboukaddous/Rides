@@ -1,4 +1,4 @@
-package com.example.rides.ui.search
+package com.example.rides.ui.shared
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -9,7 +9,10 @@ import com.example.rides.data.Vehicle
 import com.example.rides.network.VehicleApi
 import kotlinx.coroutines.launch
 
-class SearchViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
+    private var _selectedVehicle = MutableLiveData<Vehicle>()
+    val selectedVehicle: LiveData<Vehicle> = _selectedVehicle
+
     private val _vehicleInformation = MutableLiveData<List<Vehicle>>()
     val vehicleInformation:LiveData<List<Vehicle>> = _vehicleInformation
 
@@ -24,5 +27,9 @@ class SearchViewModel : ViewModel() {
                 Log.d("RETROFIT", "Failure: ${e.message}")
             }
         }
+    }
+
+    fun updateSelectedVehicleItem(vehicle: Vehicle){
+        _selectedVehicle.value = vehicle
     }
 }
