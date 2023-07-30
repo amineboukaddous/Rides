@@ -46,21 +46,27 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/inputField" />
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/vehicleRecyclerView"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/vehicleSwipeRefresh"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/submitButton"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:scrollbars="vertical"
-                app:layoutManager="LinearLayoutManager"
-                />
+                app:layout_constraintTop_toBottomOf="@id/submitButton"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/vehicleRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scrollbars="vertical"
+                    app:layoutManager="LinearLayoutManager"
+                    />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
 </layout>

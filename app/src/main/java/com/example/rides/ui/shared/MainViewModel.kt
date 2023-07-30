@@ -33,6 +33,8 @@ class MainViewModel : ViewModel() {
         _selectedVehicle.value = vehicle
     }
 
+    fun getVehicleCount(): Int? = _vehicleInformation.value?.size
+
     fun isSearchInputValid(vehicleCount: Int) : Boolean{
         if((vehicleCount >= 1) and (vehicleCount <= 100)) return true
         return false

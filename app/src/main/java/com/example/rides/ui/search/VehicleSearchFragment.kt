@@ -62,6 +62,8 @@ class VehicleSearchFragment : Fragment() {
 
                 if(viewModel.isSearchInputValid(vehicleCount)){
                     binding.inputField.error = null
+                    binding.vehicleSwipeRefresh.visibility = View.VISIBLE
+
                     viewModel.loadVehicles(vehicleCount)
                 } else{
                     binding.inputField.error = getString(R.string.bad_input_field_search)
@@ -77,6 +79,11 @@ class VehicleSearchFragment : Fragment() {
             }
         }
 
-        binding.vehicleRecyclerView
+        binding.vehicleSwipeRefresh.setOnRefreshListener {
+            val vehicleCount: Int = viewModel.getVehicleCount()!!
+
+            viewModel.loadVehicles(vehicleCount)
+            binding.vehicleSwipeRefresh.isRefreshing = false
+        }
     }
 }
