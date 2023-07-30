@@ -5,7 +5,7 @@
     <string name="color_vehicle_detail">COLOR: %1$s</string>
     <string name="type_vehicle_detail">TYPE: %1$s</string>
     <string name="desired_number_of_vehicles">Desired number of vehicles</string>
-    <string name="bad_input_field_search">Please type number between 1 and 100</string>
+    <string name="bad_input_field_search">Please type a number between 1 and 100</string>
     <string name="empty_input_field">Empty Field</string>
     <string name="carbon_emissions">Carbon Emissions</string>
     <string name="carbone_emission">Carbone Emission</string>

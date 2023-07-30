@@ -31,7 +31,6 @@ class VehicleSearchFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vehicleRecyclerView.adapter = VehicleAdapter(listOf<Vehicle>())
-
         return binding.root
     }
 
@@ -40,7 +39,9 @@ class VehicleSearchFragment : Fragment() {
         viewModel.vehicleInformation.observe(viewLifecycleOwner){ it ->
             if(it.isNotEmpty()){
                 val vehicleAdapter = VehicleAdapter(it)
+                binding.vehicleSwipeRefresh.visibility = View.VISIBLE
                 binding.vehicleRecyclerView.adapter = vehicleAdapter
+                binding.inputField.error = null
 
                 vehicleAdapter.listener = { vehicle ->
                     vehicle?.let {
@@ -61,9 +62,6 @@ class VehicleSearchFragment : Fragment() {
                 val vehicleCount = Integer.parseInt(inputFieldValue)
 
                 if(viewModel.isSearchInputValid(vehicleCount)){
-                    binding.inputField.error = null
-                    binding.vehicleSwipeRefresh.visibility = View.VISIBLE
-
                     viewModel.loadVehicles(vehicleCount)
                 } else{
                     binding.inputField.error = getString(R.string.bad_input_field_search)
