@@ -24,8 +24,6 @@ class VehicleDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentVehicleDetailsBinding.inflate(inflater, container, false)
-        binding.viewModel = sharedViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
     }
@@ -42,8 +40,8 @@ class VehicleDetailsFragment : Fragment() {
         }
 
         binding.carbonEmissions.setOnClickListener{
-            val killometrage: Int = viewModel.kilometrage
-            val emissions: String = viewModel.estimateCarboneEmissions(killometrage).toString()
+            val kilometrage: Int = viewModel.kilometrage
+            val emissions: String = viewModel.estimateCarboneEmissions(kilometrage).toString()
             val emissionTextViewValue = getString(R.string.carbon_emission_unit, emissions)
 
             val modalBottomSheet = VehicleDetailsBottomSheetFragment(emissionTextViewValue)

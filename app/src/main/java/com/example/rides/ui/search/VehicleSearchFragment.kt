@@ -1,14 +1,11 @@
 package com.example.rides.ui.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.rides.R
 import com.example.rides.data.Vehicle
@@ -28,8 +25,6 @@ class VehicleSearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentVehicleSearchBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.vehicleRecyclerView.adapter = VehicleAdapter(listOf<Vehicle>())
         return binding.root
     }
@@ -74,9 +69,7 @@ class VehicleSearchFragment : Fragment() {
         }
 
         binding.inputField.editText?.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                binding.inputField.error = null
-            }
+            if (hasFocus) binding.inputField.error = null
         }
 
         binding.vehicleSwipeRefresh.setOnRefreshListener {
