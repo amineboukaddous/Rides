@@ -14,7 +14,8 @@
                 android:id="@+id/action_vehicleSearchFragment_to_vehicleDetailsFragment"
                 app:destination="@id/vehicleDetailsFragment"
                 app:popUpTo="@id/vehicleSearchFragment"
-                app:popUpToInclusive="true"/>
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"/>
     </fragment>
     <fragment
             android:id="@+id/vehicleDetailsFragment"

@@ -43,7 +43,7 @@ class VehicleSearchFragment : Fragment() {
                     vehicle?.let {
                         val navController = findNavController()
 
-                        navController.navigate(R.id.vehicleDetailsFragment)
+                        navController.navigate(R.id.action_vehicleSearchFragment_to_vehicleDetailsFragment)
                         viewModel.updateSelectedVehicleItem(vehicle)
                     }
                 }
