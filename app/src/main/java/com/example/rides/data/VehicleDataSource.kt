@@ -1,6 +1,6 @@
 package com.example.rides.data
 
-import com.example.rides.network.VehicleApi
+import com.example.rides.data.network.VehicleApi
 import javax.inject.Inject
 
 class VehicleDataSource @Inject constructor(

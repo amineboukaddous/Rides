@@ -16,14 +16,6 @@ android {
         viewBinding true
     }
 
-    viewBinding {
-        enabled = true
-    }
-
-    dataBinding {
-        enabled = true
-    }
-
     defaultConfig {
         applicationId "com.example.rides"
         minSdk 23

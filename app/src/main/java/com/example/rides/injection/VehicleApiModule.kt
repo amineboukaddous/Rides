@@ -1,7 +1,7 @@
 package com.example.rides.injection
 
-import com.example.rides.network.VehicleApi
-import com.example.rides.network.VehicleApiService
+import com.example.rides.data.network.VehicleApi
+import com.example.rides.data.network.VehicleApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

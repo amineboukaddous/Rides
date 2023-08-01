@@ -1,4 +1,4 @@
-package com.example.rides.network
+package com.example.rides.data.network
 
 import com.example.rides.data.Vehicle
 import com.squareup.moshi.Moshi
