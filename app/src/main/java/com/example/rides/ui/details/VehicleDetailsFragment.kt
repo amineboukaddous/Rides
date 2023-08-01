@@ -5,22 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.rides.R
+import com.example.rides.data.Vehicle
 import com.example.rides.databinding.FragmentVehicleDetailsBinding
-import com.example.rides.ui.shared.MainViewModel
 import com.example.rides.widget.VehicleDetailsBottomSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 
 @AndroidEntryPoint
 class VehicleDetailsFragment : Fragment() {
+    private lateinit var vehicle: Vehicle
+
     private var _binding: FragmentVehicleDetailsBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<VehicleDetailsViewModel>()
-    private val sharedViewModel by activityViewModels<MainViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            vehicle = it.getParcelable("vehicleArg")!!
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,13 +40,11 @@ class VehicleDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.selectedVehicle.observe(viewLifecycleOwner){
-            binding.vehicleMakeModel.text = it.makeModel
-            binding.vehicleVin.text = getString(R.string.vin_vehicle_detail, it.vin)
-            binding.vehicleColor.text = getString(R.string.color_vehicle_detail, it.color)
-            binding.vehicleType.text = getString(R.string.type_vehicle_detail, it.carType)
-            viewModel.kilometrage = it.kilometrage
-        }
+        binding.vehicleMakeModel.text = vehicle.makeModel
+        binding.vehicleVin.text = getString(R.string.vin_vehicle_detail, vehicle.vin)
+        binding.vehicleColor.text = getString(R.string.color_vehicle_detail, vehicle.color)
+        binding.vehicleType.text = getString(R.string.type_vehicle_detail, vehicle.carType)
+        viewModel.kilometrage = vehicle.kilometrage
 
         binding.carbonEmissions.setOnClickListener{
             val kilometrage: Int = viewModel.kilometrage

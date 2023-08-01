@@ -1,16 +1,16 @@
 package com.example.rides.ui
 
-import com.example.rides.ui.search.MainViewModel
+import com.example.rides.ui.search.VehicleSearchViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class MainViewModelTest{
-    private lateinit var viewModel: MainViewModel
+class VehicleSearchViewModelTest{
+    private lateinit var viewModel: VehicleSearchViewModel
 
     @Before
     fun setup(){
-        viewModel = MainViewModel()
+        viewModel = VehicleSearchViewModel()
     }
 
     @Test

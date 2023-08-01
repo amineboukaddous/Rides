@@ -1,7 +1,12 @@
 package com.example.rides.data
 
-import com.squareup.moshi.Json
 
+import android.os.Parcelable
+import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
+
+
+@Parcelize
 data class Vehicle(
     val id:Int,
     val uid: String,
@@ -18,4 +23,4 @@ data class Vehicle(
     val mileage: Int,
     val kilometrage: Int,
     @Json(name = "license_plate") val licensePlate: String
-)
+) : Parcelable

@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.rides.R
 import com.example.rides.data.Vehicle
 import com.example.rides.databinding.FragmentVehicleSearchBinding
 import com.example.rides.ui.search.adapter.VehicleAdapter
-import com.example.rides.ui.shared.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +19,7 @@ class VehicleSearchFragment : Fragment() {
     private var _binding: FragmentVehicleSearchBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by activityViewModels<MainViewModel>()
+    private val viewModel by viewModels<VehicleSearchViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +33,7 @@ class VehicleSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.vehicleInformation.observe(viewLifecycleOwner){ it ->
+        viewModel.vehicleList.observe(viewLifecycleOwner){ it ->
             if(it.isNotEmpty()){
                 val vehicleAdapter = VehicleAdapter(it)
                 binding.vehicleSwipeRefresh.visibility = View.VISIBLE
@@ -43,10 +43,9 @@ class VehicleSearchFragment : Fragment() {
 
                 vehicleAdapter.listener = { vehicle ->
                     vehicle?.let {
-                        val navController = findNavController()
+                        val action = VehicleSearchFragmentDirections.actionVehicleSearchFragmentToVehicleDetailsFragment(it)
 
-                        navController.navigate(R.id.action_vehicleSearchFragment_to_vehicleDetailsFragment)
-                        viewModel.updateSelectedVehicleItem(vehicle)
+                        findNavController().navigate(action)
                     }
                 }
             }
@@ -75,7 +74,7 @@ class VehicleSearchFragment : Fragment() {
         }
 
         binding.vehicleSwipeRefresh.setOnRefreshListener {
-            val vehicleCount: Int = viewModel.getVehicleCount()!!
+            val vehicleCount: Int = viewModel.vehicleList.value?.size ?: 0
 
             viewModel.loadVehicles(vehicleCount)
             binding.vehicleSwipeRefresh.isRefreshing = false

@@ -1,7 +1,6 @@
 package com.example.rides.widget
 
 import com.example.rides.ui.details.VehicleDetailsViewModel
-import com.example.rides.ui.shared.MainViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
