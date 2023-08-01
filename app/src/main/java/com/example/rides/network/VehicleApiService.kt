@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import javax.inject.Inject
 
 private const val BASE_URL = "https://random-data-api.com/api/vehicle/"
 
@@ -24,6 +25,6 @@ interface VehicleApiService {
     suspend fun getVehicles(@Query("size") size: Int): List<Vehicle>
 }
 
-object VehicleApi {
+class VehicleApi @Inject constructor(){
     val retrofitService: VehicleApiService by lazy { retrofit.create(VehicleApiService::class.java) }
 }

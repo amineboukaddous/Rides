@@ -9,9 +9,9 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object MainViewModelModule {
+object VehicleApiModule {
     @Provides
     fun provideVehicleApi(): VehicleApiService {
-        return VehicleApi.retrofitService
+        return VehicleApi().retrofitService
     }
 }

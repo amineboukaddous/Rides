@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rides.data.Vehicle
+import com.example.rides.data.VehicleRepository
 import com.example.rides.network.VehicleApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VehicleSearchViewModel @Inject constructor(
-    private val vehicleApi: VehicleApiService
+    private val vehicleRepository: VehicleRepository
 ) : ViewModel() {
 
     private val _vehicleList = MutableLiveData<List<Vehicle>>()
@@ -22,7 +23,7 @@ class VehicleSearchViewModel @Inject constructor(
     fun loadVehicles(desiredVehicleCount: Int){
         viewModelScope.launch {
             try {
-                val vehicles = vehicleApi.getVehicles(desiredVehicleCount)
+                val vehicles = vehicleRepository.fetchRandomVehicles(desiredVehicleCount)
                 val sortedVehicles = vehicles.sortedBy { it.vin }
 
                 _vehicleList.value = sortedVehicles
