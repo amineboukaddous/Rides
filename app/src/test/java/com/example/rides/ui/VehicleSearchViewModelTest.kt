@@ -1,6 +1,6 @@
 package com.example.rides.ui
 
-import com.example.rides.ui.shared.MainViewModel
+import com.example.rides.ui.search.MainViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

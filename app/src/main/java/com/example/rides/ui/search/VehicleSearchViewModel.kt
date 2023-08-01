@@ -1,4 +1,4 @@
-package com.example.rides.ui.shared
+package com.example.rides.ui.search
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rides.data.Vehicle
-import com.example.rides.network.VehicleApi
 import com.example.rides.network.VehicleApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
