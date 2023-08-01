@@ -12,7 +12,9 @@ import com.example.rides.data.Vehicle
 import com.example.rides.databinding.FragmentVehicleSearchBinding
 import com.example.rides.ui.search.adapter.VehicleAdapter
 import com.example.rides.ui.shared.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class VehicleSearchFragment : Fragment() {
     private var _binding: FragmentVehicleSearchBinding? = null
     private val binding get() = _binding!!

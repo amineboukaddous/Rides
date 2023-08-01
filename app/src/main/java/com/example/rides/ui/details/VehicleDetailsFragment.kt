@@ -11,7 +11,10 @@ import com.example.rides.R
 import com.example.rides.databinding.FragmentVehicleDetailsBinding
 import com.example.rides.ui.shared.MainViewModel
 import com.example.rides.widget.VehicleDetailsBottomSheetFragment
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
+@AndroidEntryPoint
 class VehicleDetailsFragment : Fragment() {
     private var _binding: FragmentVehicleDetailsBinding? = null
     private val binding get() = _binding!!
