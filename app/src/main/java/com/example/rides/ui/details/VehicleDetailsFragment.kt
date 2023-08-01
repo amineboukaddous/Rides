@@ -55,4 +55,9 @@ class VehicleDetailsFragment : Fragment() {
             activity?.let { it1 -> modalBottomSheet.show(it1.supportFragmentManager, VehicleDetailsBottomSheetFragment.TAG) }
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

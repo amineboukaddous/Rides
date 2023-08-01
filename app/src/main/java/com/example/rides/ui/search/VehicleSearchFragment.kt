@@ -28,6 +28,8 @@ class VehicleSearchFragment : Fragment() {
     ): View {
         _binding = FragmentVehicleSearchBinding.inflate(inflater, container, false)
         binding.vehicleRecyclerView.adapter = VehicleAdapter(listOf<Vehicle>())
+        binding.viewModel = viewModel
+
         return binding.root
     }
 
@@ -42,11 +44,8 @@ class VehicleSearchFragment : Fragment() {
                 binding.inputField.error = null
 
                 vehicleAdapter.listener = { vehicle ->
-                    vehicle?.let {
-                        val action = VehicleSearchFragmentDirections.actionVehicleSearchFragmentToVehicleDetailsFragment(it)
-
-                        findNavController().navigate(action)
-                    }
+                    val action = VehicleSearchFragmentDirections.actionVehicleSearchFragmentToVehicleDetailsFragment(vehicle)
+                    findNavController().navigate(action)
                 }
             }
         }
@@ -74,10 +73,15 @@ class VehicleSearchFragment : Fragment() {
         }
 
         binding.vehicleSwipeRefresh.setOnRefreshListener {
-            val vehicleCount: Int = viewModel.vehicleList.value?.size ?: 0
+            val vehicleCount: Int = binding.vehicleRecyclerView.adapter?.itemCount ?: 0
 
             viewModel.loadVehicles(vehicleCount)
             binding.vehicleSwipeRefresh.isRefreshing = false
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
