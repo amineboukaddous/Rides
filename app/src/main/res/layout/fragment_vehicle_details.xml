@@ -7,7 +7,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.example.rides.ui.search.VehicleSearchViewModel" />
+                type="com.example.rides.ui.details.VehicleDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

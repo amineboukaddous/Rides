@@ -16,14 +16,15 @@
                 app:popUpTo="@id/vehicleSearchFragment"
                 app:enterAnim="@anim/slide_in"
                 app:exitAnim="@anim/fade_out" >
-            <argument
-                    android:name="vehicleArg"
-                    app:argType="com.example.rides.data.Vehicle" />
         </action>
     </fragment>
     <fragment
             android:id="@+id/vehicleDetailsFragment"
             android:name="com.example.rides.ui.details.VehicleDetailsFragment"
             android:label="Vehicle Details"
-            tools:layout="@layout/fragment_vehicle_details" />
+            tools:layout="@layout/fragment_vehicle_details" >
+        <argument
+                android:name="vehicle"
+                app:argType="com.example.rides.data.Vehicle" />
+    </fragment>
 </navigation>
