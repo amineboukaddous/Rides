@@ -18,23 +18,23 @@ class VehicleSearchViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _vehicleList = MutableLiveData<List<Vehicle>>()
-    val vehicleList:LiveData<List<Vehicle>> = _vehicleList
+    val vehicleList: LiveData<List<Vehicle>> = _vehicleList
 
-    fun loadVehicles(desiredVehicleCount: Int){
+    fun loadVehicles(desiredVehicleCount: Int) {
         viewModelScope.launch {
             try {
                 val vehicles = vehicleRepository.fetchRandomVehicles(desiredVehicleCount)
                 val sortedVehicles = vehicles.sortedBy { it.vin }
 
                 _vehicleList.value = sortedVehicles
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.d("RETROFIT", "Failure: ${e.message}")
             }
         }
     }
 
-    fun isSearchInputValid(vehicleCount: Int) : Boolean{
-        if((vehicleCount >= 1) and (vehicleCount <= 100)) return true
+    fun isSearchInputValid(vehicleCount: Int): Boolean {
+        if ((vehicleCount >= 1) and (vehicleCount <= 100)) return true
         return false
     }
 }

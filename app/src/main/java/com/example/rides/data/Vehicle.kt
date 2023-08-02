@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Vehicle(
-    val id:Int,
+    val id: Int,
     val uid: String,
     val vin: String,
     @Json(name = "make_and_model") val makeModel: String,

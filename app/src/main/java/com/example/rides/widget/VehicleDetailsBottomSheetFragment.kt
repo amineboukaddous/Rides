@@ -8,7 +8,8 @@ import android.widget.TextView
 import com.example.rides.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class VehicleDetailsBottomSheetFragment(private val emissions: String) : BottomSheetDialogFragment(){
+class VehicleDetailsBottomSheetFragment(private val emissions: String) :
+    BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

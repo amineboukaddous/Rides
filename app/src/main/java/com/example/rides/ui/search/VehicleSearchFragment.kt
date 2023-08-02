@@ -35,8 +35,8 @@ class VehicleSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.vehicleList.observe(viewLifecycleOwner){ it ->
-            if(it.isNotEmpty()){
+        viewModel.vehicleList.observe(viewLifecycleOwner) { it ->
+            if (it.isNotEmpty()) {
                 val vehicleAdapter = VehicleAdapter(it)
                 binding.vehicleSwipeRefresh.visibility = View.VISIBLE
                 binding.progressBar.visibility = View.GONE
@@ -44,7 +44,10 @@ class VehicleSearchFragment : Fragment() {
                 binding.inputField.error = null
 
                 vehicleAdapter.listener = { vehicle ->
-                    val action = VehicleSearchFragmentDirections.actionVehicleSearchFragmentToVehicleDetailsFragment(vehicle)
+                    val action =
+                        VehicleSearchFragmentDirections.actionVehicleSearchFragmentToVehicleDetailsFragment(
+                            vehicle
+                        )
                     findNavController().navigate(action)
                 }
             }
@@ -52,18 +55,18 @@ class VehicleSearchFragment : Fragment() {
 
         binding.submitButton.setOnClickListener {
             val editText = binding.inputField.editText
-            val inputFieldValue:String = editText?.text.toString()
+            val inputFieldValue: String = editText?.text.toString()
 
-            if(inputFieldValue.isNotEmpty()){
+            if (inputFieldValue.isNotEmpty()) {
                 val vehicleCount = Integer.parseInt(inputFieldValue)
 
-                if(viewModel.isSearchInputValid(vehicleCount)){
+                if (viewModel.isSearchInputValid(vehicleCount)) {
                     binding.progressBar.visibility = View.VISIBLE
                     viewModel.loadVehicles(vehicleCount)
-                } else{
+                } else {
                     binding.inputField.error = getString(R.string.bad_input_field_search)
                 }
-            } else{
+            } else {
                 binding.inputField.error = getString(R.string.empty_input_field)
             }
         }

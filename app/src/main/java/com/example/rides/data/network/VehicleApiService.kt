@@ -25,6 +25,6 @@ interface VehicleApiService {
     suspend fun getVehicles(@Query("size") size: Int): List<Vehicle>
 }
 
-class VehicleApi @Inject constructor(){
+class VehicleApi @Inject constructor() {
     val retrofitService: VehicleApiService by lazy { retrofit.create(VehicleApiService::class.java) }
 }

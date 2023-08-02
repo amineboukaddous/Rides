@@ -45,7 +45,8 @@ class VehicleDetailsFragment @Inject constructor(
         viewModel.kilometrage = args.vehicle.kilometrage
 
         binding.carbonEmissions.setOnClickListener {
-            val emissions: String = viewModel.estimateCarboneEmissions(viewModel.kilometrage).toString()
+            val emissions: String =
+                viewModel.estimateCarboneEmissions(viewModel.kilometrage).toString()
             val emissionTextViewValue = getString(R.string.carbon_emission_unit, emissions)
             val modalBottomSheet = VehicleDetailsBottomSheetFragment(emissionTextViewValue)
 
