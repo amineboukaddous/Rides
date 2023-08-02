@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><!-- TODO: Add styling -->
+<?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+                name="vehicle"
+                type="com.example.rides.data.Vehicle" />
         <variable
                 name="viewModel"
                 type="com.example.rides.ui.details.VehicleDetailsViewModel" />
@@ -31,6 +33,7 @@
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:textStyle="bold"
+                    android:text="@{vehicle.makeModel}"
                     tools:text="Audi A5" />
 
             <TextView
@@ -38,6 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
+                    android:text="@{@string/vin_vehicle_detail(vehicle.vin)}"
                     tools:text="VIN: 5DJLRKXPPEPR68162" />
 
             <TextView
@@ -45,6 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
+                    android:text="@{@string/color_vehicle_detail(vehicle.color)}"
                     tools:text="COLOR: White" />
 
             <TextView
@@ -52,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
+                    android:text="@{@string/type_vehicle_detail(vehicle.carType)}"
                     tools:text="TYPE: Cargo Van" />
 
             <Button

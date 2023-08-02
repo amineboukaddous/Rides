@@ -38,10 +38,7 @@ class VehicleDetailsFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.vehicleMakeModel.text = args.vehicle.makeModel
-        binding.vehicleVin.text = getString(R.string.vin_vehicle_detail, args.vehicle.vin)
-        binding.vehicleColor.text = getString(R.string.color_vehicle_detail, args.vehicle.color)
-        binding.vehicleType.text = getString(R.string.type_vehicle_detail, args.vehicle.carType)
+        binding.vehicle = args.vehicle
         viewModel.kilometrage = args.vehicle.kilometrage
 
         binding.carbonEmissions.setOnClickListener {
