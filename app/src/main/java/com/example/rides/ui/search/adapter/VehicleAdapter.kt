@@ -1,9 +1,7 @@
 package com.example.rides.ui.search.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rides.R
@@ -39,7 +37,7 @@ class VehicleAdapter(
         val cardView = holder.itemView.findViewById<MaterialCardView>(R.id.cardView)
         val vehicle = vehicleList[position]
         cardView.setOnClickListener {
-            listener.invoke(vehicle)
+            listener(vehicle)
         }
 
         holder.bind(vehicle)

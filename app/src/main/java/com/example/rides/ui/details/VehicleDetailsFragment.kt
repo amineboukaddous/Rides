@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.rides.R
-import com.example.rides.data.Vehicle
 import com.example.rides.databinding.FragmentVehicleDetailsBinding
 import com.example.rides.widget.VehicleDetailsBottomSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
